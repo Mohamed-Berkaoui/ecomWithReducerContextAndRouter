@@ -11,7 +11,7 @@ function NavBar() {
           <Nav className="me-auto d-flex gap-4">
             <Link to="/" >Home</Link>
             <Link to="/products">Products</Link>
-            <Link to="#link">cart</Link>
+            <Link to="/cart">cart</Link>
 
           </Nav>
         </Navbar.Collapse>

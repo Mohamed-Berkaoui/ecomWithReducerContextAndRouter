@@ -1,11 +1,12 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext } from "react";
 import useGetProducts from "./useGetProducts";
 
 export const productsContext = createContext();
 
 function ProductsStore({ children }) {
+  
   const data=useGetProducts()
+
   function getTopRatedProds(){
     return data.products.sort((a,b)=>a.rating.rate-b.rating.rate).toReversed().slice(0,4)
   }
