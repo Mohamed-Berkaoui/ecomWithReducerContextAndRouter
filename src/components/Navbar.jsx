@@ -15,6 +15,7 @@ function NavBar() {
 
           </Nav>
         </Navbar.Collapse>
+        <Link to={"/admin/dashboard"}> admin dashboard</Link>
       </Container>
     </Navbar>
   )

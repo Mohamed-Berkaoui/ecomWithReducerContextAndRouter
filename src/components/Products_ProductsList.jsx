@@ -4,17 +4,20 @@ import { productsContext } from "../contexts/products/ProductsStore";
 
 function Products_ProductsList({ search }) {
   const { products } = useContext(productsContext);
-  return (
-    <div>
-      <div className="d-flex justify-content-center gap-5 flex-wrap ">
-        {products
+  const filterdProducts=products
           .filter((ele) =>
             ele.title.toLowerCase().includes(search.title.toLowerCase())
           )
           .filter((ele) =>
             search.category == "all" ? true : ele.category == search.category
           )
-          .map((e) => (
+  if(!filterdProducts.length)
+    return <h1>no product found</h1>
+  return (
+    <div>
+      <div className="d-flex justify-content-center gap-5 flex-wrap ">
+        {
+          filterdProducts.map((e) => (
             <ProductCard key={e.id} product={e} />
           ))}
       </div>

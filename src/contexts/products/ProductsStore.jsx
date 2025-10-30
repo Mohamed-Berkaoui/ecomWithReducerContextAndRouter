@@ -8,7 +8,7 @@ function ProductsStore({ children }) {
   const data=useGetProducts()
 
   function getTopRatedProds(){
-    return data.products.sort((a,b)=>a.rating.rate-b.rating.rate).toReversed().slice(0,4)
+    return data.products.sort((a,b)=>a.rating?.rate-b.rating?.rate).toReversed().slice(0,4)
   }
   
   return (

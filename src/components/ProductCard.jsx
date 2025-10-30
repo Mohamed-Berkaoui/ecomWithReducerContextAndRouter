@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router";
 import { cartContext } from "../contexts/cart/CartStore";
+import { toast } from "react-toastify";
 
 function ProductCard({ product }) {
   const { userCart, dispatchCart } = useContext(cartContext);
@@ -10,6 +11,7 @@ function ProductCard({ product }) {
   const existOnCart = !!userCart.find((e) => product.id == e.product.id);
   function handleAddToCart() {
     dispatchCart({ type: "ADDTOCART", payload: product });
+    toast.success("added to cart",{position:"top-center",theme:"dark"})
   }
   return (
     <Card style={{ width: "18rem" }}>

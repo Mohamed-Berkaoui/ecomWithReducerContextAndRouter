@@ -5,7 +5,6 @@ export const cartContext = createContext();
 
 function CartStore({ children }) {
   const cartInitValue=localStorage.getItem('cart')?JSON.parse(localStorage.getItem('cart')):[]
-  console.log("🚀 ~ CartStore ~ cartInitValue:", cartInitValue)
   const [userCart, dispatchCart] = useReducer(cartReducer,cartInitValue );
 
 console.log(userCart)
