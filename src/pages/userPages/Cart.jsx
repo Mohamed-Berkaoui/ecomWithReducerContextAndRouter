@@ -18,7 +18,7 @@ function Cart() {
   function handlePostOrder(){
     axios.post('http://localhost:3000/orders',{userCart:userCart})
     .then(res=>{
-      toast.success('success')
+      toast.success('order passed')
       dispatchCart({type:"RESETCART"})
       navigate(-1)
     })

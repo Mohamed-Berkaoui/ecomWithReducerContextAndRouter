@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Table } from "react-bootstrap";
 import { productsContext } from "../../contexts/products/ProductsStore";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function ProductList() {
-  const { products } = useContext(productsContext);
+  const { products,setProducts } = useContext(productsContext);
   return (
     <div>
       <Table>
@@ -26,7 +28,13 @@ function ProductList() {
             <td>{prod.price}</td>
             <td>{prod.category}</td>
             <td><button>edit</button></td>
-            <td><button>delete</button></td>
+            <td><button onClick={function(){
+              axios.delete("http://localhost:3000/products/"+prod.id)
+              .then(res=>{toast.success("product deleted")
+                setProducts(state=>state.filter(ele=>ele.id!=prod.id))
+
+              })
+            }}>delete</button></td>
           </tr>
         ))}
       </Table>
